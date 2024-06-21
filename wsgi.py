@@ -33,4 +33,4 @@ app.register_blueprint(auth_bp)
 
 if __name__ == '__main__':
     create_app()
-    app.run(debug=True,port =5001)
+    app.run(debug=True,port =3002)

@@ -56,11 +56,11 @@ def update_event(customer_id):
     event = EVENT.query.filter_by(customer_id=customer_id).first()
     if not event:
         return jsonify({'message': 'Event not found'}), 404
-    event.event_code = data['event_code']
-    event.event = data['event']
-    event.customer_id = data['customer_id']
+    event.event_code = data.get('event_code',event.event_code)
+    event.event = data.get('event',event.event)
+    event.customer_id = data.get('customer_id',event.customer_id)
     # event.vendor_id = data['vendor_id']
-    event.booking_status = data['booking_status']
+    event.booking_status = data.get('booking_status',event.booking_status)
     db.session.commit()
     return jsonify({'message': 'Event updated successfully'})
 
